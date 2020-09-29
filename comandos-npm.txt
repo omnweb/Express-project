@@ -3,6 +3,17 @@ npm init -y
 //Instalando dependência do express dentro de packageJson
 npm i --save express
 
+// para rodar o backend
+node index.js 
 
+//Criando uma dependência que será utilizada como launcher enquanto em desenvolvimento
+// Ele monitora os arquivos e a cada nova alteração salva ele recarrega a aplicação
+npm i --save -deve nodemon
 
+// Startar aplicação 
+nodemon index.js
+
+// Fazendo a alteração  "scripts": {"start": "nodemon"} 
+//no package.json é possível startar usando
+npm rum start ou apenas npm start
 
