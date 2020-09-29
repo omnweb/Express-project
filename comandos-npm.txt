@@ -17,3 +17,33 @@ nodemon index.js
 //no package.json é possível startar usando
 npm rum start ou apenas npm start
 
+// Adicionando dependência do pm2, launcher utiliado para produção 
+npm i --save pm2 
+
+//alterando package.json para startar pm2 em produção
+//Acrescentar "production": "pm2 start index.js" dentro do campo script
+
+// Para rodar a aplicação em produção usar
+npm run production
+
+// instalando pm2 de forma global
+npm i -g pm2
+
+// Abrindo interface de monitoramento do pm2
+pm2 monit
+
+//Verificar status
+pm2 status
+
+//Mostrar detalhes da aplicação
+pm2 show 0
+
+//Restartar aplicação usando o id 
+pm2 restart 0 
+
+//Restartar aplicação usando o nome
+pm2 restart appx-backend
+
+// Parar a aplicação usando id
+pm2 stop 0
+

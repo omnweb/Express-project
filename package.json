@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon", 
+    "production": "pm2 start index.js --name appx-backend"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"   
+    "express": "^4.17.1",
+    "pm2": "^4.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
