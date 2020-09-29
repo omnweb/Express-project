@@ -1,0 +1,8 @@
+//Criando um package.json em branco 
+npm init -y
+//Instalando dependência do express dentro de packageJson
+npm i --save express
+
+
+
+
