@@ -2,9 +2,14 @@ const express = require('express')
 const saudacao = require('./saudcaoMiddle')
 const bodyParser = require('body-parser')
 const usuarioApi = require('./api/usuario')
+const produtoApi = require('./api/produto')
 
 //Instanciando o express que retornará a aplicação
 const app = express()
+
+// Invocando a função contida em produto api
+produtoApi(app, 'com param...')
+
 
 // Chamando as funções dentro de usuário
 // se o usuário digitar /usuario, vai chamar usuarioApi.salvar
