@@ -4,6 +4,31 @@ const saudacao = require('./saudcaoMiddle')
 //Instanciando o express que retornará a aplicação
 const app = express()
 
+//Passando dois parâmetros, se o relatório será completo e o ano do relatório
+app.get('/clientes/relatorio', (req, res) => {
+    res.send(`Cliente relatório: completo = ${req.query.completo} ano = ${req.query.ano}`)
+}) 
+
+// Passando parâmetros no corpo da requisição com post, usando a forma difícil sem o body parser
+app.post('/corpo', (req, res) => {
+    let corpo = ''
+    //Qdo chegar dados a partir do corpo da requisição
+    req.on('data', function(parte){ // função recebe a parte que está chegando
+        corpo += parte
+    })
+    //Mandando de volta o que foi recebido
+    req.on('end', function(){
+        res.send(corpo)
+    })
+})
+
+//Passando id como parâmentro diretamente na url
+app.get('/clientes/:id', (req, res) => {
+    // Acessando parâmetro id para uma template string
+    res.send(`Cliente ${req.params.id} selecionado!`)
+})
+
+
 // Usando a função saudação importada
 app.use(saudacao('Guilherme'))
 
