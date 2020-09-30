@@ -1,6 +1,11 @@
 const express = require('express')
+const saudacao = require('./saudcaoMiddle')
+
 //Instanciando o express que retornará a aplicação
 const app = express()
+
+// Usando a função saudação importada
+app.use(saudacao('Guilherme'))
 
  // Função middleware
  app.use('/opa', (req, res, next) => {
