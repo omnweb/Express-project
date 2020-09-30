@@ -2,10 +2,17 @@ const express = require('express')
 //Instanciando o express que retornará a aplicação
 const app = express()
 
+ // Função middleware
+ app.use('/opa', (req, res, next) => {
+    console.log("Antes...")
+    next()
+})
+
 // Método use recebe como parâmetro a requisição e resposta
 // Permite tanto executar um get quanto um post
 // Uma callback devolve a resp
-app.use('/opa',(req, res) => {
+app.get('/opa',(req, res, next) => {
+    console.log("Durante...")
     // Passando array de objetos
     // res.json([
     //     {id: 7, name: "Ana", position: 1 },
@@ -26,6 +33,7 @@ app.use('/opa',(req, res) => {
         status: 200 // Pode conter um status
 
     })
+    next()    
 
     /*
     Enviando resposta em json
@@ -36,6 +44,10 @@ app.use('/opa',(req, res) => {
     })
     */
     // res.send('Estou <b>bem</b>!.')
+})
+
+app.use((req, res) => {
+    console.log("Depois...")       
 })
 
 //Backend executando na porta 3000
