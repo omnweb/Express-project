@@ -50,3 +50,6 @@ pm2 stop 0
 //Matando a instância do pm2
 pm2 kill
 
+// Instalando dependência do body-parser
+npm i --save body-parser
+

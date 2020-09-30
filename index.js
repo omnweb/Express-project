@@ -1,5 +1,6 @@
 const express = require('express')
 const saudacao = require('./saudcaoMiddle')
+const bodyParser = require('body-parser')
 
 //Instanciando o express que retornará a aplicação
 const app = express()
@@ -9,17 +10,25 @@ app.get('/clientes/relatorio', (req, res) => {
     res.send(`Cliente relatório: completo = ${req.query.completo} ano = ${req.query.ano}`)
 }) 
 
+// Qualquer texto que chegar dentro da requisição será interpretado
+app.use(bodyParser.text()) // retorna uma função meddleware
+app.use(bodyParser.json()) // retorna uma função meddleware
+app.use(bodyParser.urlencoded({extended: true})) // Chamando um parser de url encoded
+
 // Passando parâmetros no corpo da requisição com post, usando a forma difícil sem o body parser
 app.post('/corpo', (req, res) => {
-    let corpo = ''
-    //Qdo chegar dados a partir do corpo da requisição
-    req.on('data', function(parte){ // função recebe a parte que está chegando
-        corpo += parte
-    })
-    //Mandando de volta o que foi recebido
-    req.on('end', function(){
-        res.send(corpo)
-    })
+    // let corpo = ''
+    // //Qdo chegar dados a partir do corpo da requisição
+    // req.on('data', function(parte){ // função recebe a parte que está chegando
+    //     corpo += parte
+    // })
+    // //Mandando de volta o que foi recebido
+    // req.on('end', function(){
+    //     res.send(corpo)
+    // })
+
+    // Com a dependência do body-parser a linha abaixo faz o mesmo que o código acima comentado
+    res.send(req.body)
 })
 
 //Passando id como parâmentro diretamente na url
