@@ -47,3 +47,6 @@ pm2 restart appx-backend
 // Parar a aplicação usando id
 pm2 stop 0
 
+//Matando a instância do pm2
+pm2 kill
+
