@@ -1,9 +1,16 @@
 const express = require('express')
 const saudacao = require('./saudcaoMiddle')
 const bodyParser = require('body-parser')
+const usuarioApi = require('./api/usuario')
 
 //Instanciando o express que retornará a aplicação
 const app = express()
+
+// Chamando as funções dentro de usuário
+// se o usuário digitar /usuario, vai chamar usuarioApi.salvar
+app.post('/usuario', usuarioApi.salvar)
+app.get('/usuario', usuarioApi.obter)
+
 
 //Passando dois parâmetros, se o relatório será completo e o ano do relatório
 app.get('/clientes/relatorio', (req, res) => {
